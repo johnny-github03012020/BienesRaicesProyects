@@ -1,0 +1,21 @@
+{% extends 'admin/base_admin.html' %}
+
+{% block title %}Eliminar Propiedad{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2>Eliminar Propiedad</h2>
+    </div>
+    <div class="card-body">
+        <p class="lead">¿Está seguro que desea eliminar la propiedad "{{ object.title }}"?</p>
+        <form method="post">
+            {% csrf_token %}
+            <div class="d-flex justify-content-between">
+                <a href="{% url 'admin-properties' %}" class="btn btn-secondary">Cancelar</a>
+                <button type="submit" class="btn btn-danger">Confirmar Eliminación</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

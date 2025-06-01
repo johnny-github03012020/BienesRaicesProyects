@@ -1,0 +1,44 @@
+{% extends 'admin/base_admin.html' %}
+
+{% block title %}Anuncios{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Listado de Anuncios</h1>
+    <a href="{% url 'advertisement-create' %}" class="btn btn-primary">Nuevo Anuncio</a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Posición</th>
+                <th>Estado</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Fin</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ad in advertisements %}
+            <tr>
+                <td>{{ ad.title }}</td>
+                <td>{{ ad.position }}</td>
+                <td>{% if ad.is_active %}Activo{% else %}Inactivo{% endif %}</td>
+                <td>{{ ad.start_date|date:"d/m/Y" }}</td>
+                <td>{{ ad.end_date|date:"d/m/Y" }}</td>
+                <td>
+                    <a href="{% url 'advertisement-update' ad.pk %}" class="btn btn-sm btn-warning">Editar</a>
+                    <a href="{% url 'advertisement-delete' ad.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" class="text-center">No hay anuncios registrados.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

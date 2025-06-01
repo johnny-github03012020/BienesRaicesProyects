@@ -1,0 +1,99 @@
+.ad-space {
+  width: 100%;
+  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.ad-space-superior {
+  max-height: 120px;
+  background-color: #f9fafb;
+}
+
+.ad-space-lateral {
+  max-width: 300px;
+  margin-left: 1rem;
+  float: right;
+}
+
+.ad-space-medio {
+  max-height: 250px;
+  margin: 2rem 0;
+}
+
+.ad-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.ad-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Estilos para los diferentes modelos de propiedades */
+.property-model-clasico .property-main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .property-model-clasico .property-main {
+    grid-template-columns: 1.5fr 1fr;
+  }
+}
+
+.property-model-galeria .gallery-main {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.property-model-galeria .gallery-thumbnails {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+.property-model-galeria .thumbnail {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.property-model-galeria .thumbnail.active {
+  border-color: #2563eb;
+}
+
+.property-model-mapa .property-map-view {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .property-model-mapa .property-map-view {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.property-model-mapa .property-image {
+  height: 400px;
+  overflow: hidden;
+}
+
+.property-model-mapa .property-map {
+  height: 400px;
+  background-color: #f9fafb;
+  border-radius: 8px;
+}

@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="about-us-section py-5">
+    <div class="container">
+        <!-- Sección Historia -->
+        <div class="mb-5">
+            <h2 class="text-center mb-4">Nuestra Historia</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <p class="text-muted">Desde nuestra fundación, nos hemos dedicado a proporcionar servicios inmobiliarios excepcionales, construyendo relaciones duraderas con nuestros clientes y ayudándoles a encontrar el hogar de sus sueños.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección Misión y Valores -->
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <h3 class="text-center mb-3">Nuestra Misión</h3>
+                <p class="text-muted">Facilitar el proceso de compra, venta y alquiler de propiedades, brindando un servicio profesional y personalizado que supere las expectativas de nuestros clientes.</p>
+            </div>
+            <div class="col-md-6">
+                <h3 class="text-center mb-3">Nuestros Valores</h3>
+                <ul class="list-unstyled text-muted">
+                    <li class="mb-2">✓ Integridad y transparencia en cada operación</li>
+                    <li class="mb-2">✓ Compromiso con la excelencia</li>
+                    <li class="mb-2">✓ Atención personalizada</li>
+                    <li class="mb-2">✓ Innovación constante</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Sección Nuestro Equipo -->
+        <div class="team-section">
+            <h2 class="text-center mb-5">Nuestro Equipo</h2>
+            <div class="row" id="team-container">
+                <!-- El contenido del equipo se cargará dinámicamente -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Template para cada miembro del equipo -->
+<template id="team-member-template">
+    <div class="col-md-4 mb-4">
+        <div class="card team-member h-100">
+            <img src="" alt="" class="card-img-top team-member-photo">
+            <div class="card-body text-center">
+                <h5 class="card-title member-name"></h5>
+                <p class="card-text text-muted member-position"></p>
+                <p class="card-text member-description"></p>
+                <div class="social-links">
+                    <a href="#" class="linkedin-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="twitter-link" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="facebook-link" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="instagram-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+{% block extra_css %}
+<style>
+    .team-member {
+        transition: transform 0.3s ease;
+        border: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .team-member:hover {
+        transform: translateY(-5px);
+    }
+
+    .team-member-photo {
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .social-links a {
+        color: #666;
+        margin: 0 10px;
+        font-size: 1.2rem;
+        transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+        color: #007bff;
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Cargar datos del equipo desde la API
+        fetch('/api/personal/')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('team-container');
+                const template = document.getElementById('team-member-template');
+
+                data.forEach(member => {
+                    const clone = template.content.cloneNode(true);
+                    
+                    // Actualizar contenido
+                    const img = clone.querySelector('img');
+                    img.src = member.foto_url;
+                    img.alt = member.nombre_completo;
+                    
+                    clone.querySelector('.member-name').textContent = member.nombre_completo;
+                    clone.querySelector('.member-position').textContent = member.cargo;
+                    clone.querySelector('.member-description').textContent = member.descripcion;
+
+                    // Actualizar enlaces sociales
+                    const socialLinks = clone.querySelector('.social-links');
+                    if (member.linkedin) {
+                        socialLinks.querySelector('.linkedin-link').href = member.linkedin;
+                    } else {
+                        socialLinks.querySelector('.linkedin-link').style.display = 'none';
+                    }
+
+                    if (member.twitter) {
+                        socialLinks.querySelector('.twitter-link').href = member.twitter;
+                    } else {
+                        socialLinks.querySelector('.twitter-link').style.display = 'none';
+                    }
+
+                    if (member.facebook) {
+                        socialLinks.querySelector('.facebook-link').href = member.facebook;
+                    } else {
+                        socialLinks.querySelector('.facebook-link').style.display = 'none';
+                    }
+
+                    if (member.instagram) {
+                        socialLinks.querySelector('.instagram-link').href = member.instagram;
+                    } else {
+                        socialLinks.querySelector('.instagram-link').style.display = 'none';
+                    }
+
+                    container.appendChild(clone);
+                });
+            })
+            .catch(error => console.error('Error cargando el equipo:', error));
+    });
+</script>
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,10 @@
+.lazy-image-loading {
+  filter: blur(10px);
+  transition: filter 0.3s ease;
+  background-color: #f0f0f0;
+}
+
+.lazy-image-loaded {
+  filter: blur(0);
+  transition: filter 0.3s ease;
+}

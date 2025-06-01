@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "https://johnny-github03012020.github.io/BienesRaicesProyects/static/css/main.4522640d.css",
+    "main.js": "https://johnny-github03012020.github.io/BienesRaicesProyects/static/js/main.2f5e6e02.js",
+    "index.html": "https://johnny-github03012020.github.io/BienesRaicesProyects/index.html",
+    "main.4522640d.css.map": "https://johnny-github03012020.github.io/BienesRaicesProyects/static/css/main.4522640d.css.map",
+    "main.2f5e6e02.js.map": "https://johnny-github03012020.github.io/BienesRaicesProyects/static/js/main.2f5e6e02.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4522640d.css",
+    "static/js/main.2f5e6e02.js"
+  ]
+}

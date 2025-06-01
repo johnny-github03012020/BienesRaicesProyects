@@ -1,0 +1,24 @@
+.home-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.home-search .btn-primary {
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.home-search .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.home-search .btn-primary:active {
+    transform: translateY(0);
+    box-shadow: none;
+}

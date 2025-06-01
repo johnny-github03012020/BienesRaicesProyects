@@ -1,0 +1,44 @@
+{% extends 'admin/base_admin.html' %}
+
+{% block title %}Propiedades{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Listado de Propiedades</h1>
+    <a href="{% url 'property-create' %}" class="btn btn-primary">Nueva Propiedad</a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Precio</th>
+                <th>Ubicación</th>
+                <th>Tipo</th>
+                <th>Destacada</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for property in properties %}
+            <tr>
+                <td>{{ property.title }}</td>
+                <td>${{ property.price|floatformat:2 }}</td>
+                <td>{{ property.location }}</td>
+                <td>{{ property.property_type }}</td>
+                <td>{% if property.is_featured %}Sí{% else %}No{% endif %}</td>
+                <td>
+                    <a href="{% url 'property-update' property.pk %}" class="btn btn-sm btn-warning">Editar</a>
+                    <a href="{% url 'property-delete' property.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" class="text-center">No hay propiedades registradas.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

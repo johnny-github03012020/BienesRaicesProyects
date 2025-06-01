@@ -1,0 +1,154 @@
+.property-slider-container {
+  position: relative;
+  width: 100%;
+  height: 650px;
+  overflow: hidden;
+}
+
+.slider-item {
+  position: relative;
+  height: 650px;
+}
+
+.slider-image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slider-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.9);
+}
+
+.slider-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.slider-content {
+  color: white;
+  text-align: center;
+  max-width: 800px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slider-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.slider-content p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.slider-content .btn {
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.slider-content .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Custom arrows */
+.custom-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  z-index: 10;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.custom-arrow:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.custom-arrow:before {
+  font-size: 24px;
+  color: white;
+  display: block;
+  text-align: center;
+  line-height: 50px;
+}
+
+.prev-arrow {
+  left: 20px;
+}
+
+.next-arrow {
+  right: 20px;
+}
+
+/* Dots styling */
+.slick-dots {
+  bottom: 25px;
+}
+
+.slick-dots li button:before {
+  font-size: 12px;
+  color: white;
+  opacity: 0.7;
+}
+
+.slick-dots li.slick-active button:before {
+  opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .slider-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .slider-content p {
+    font-size: 1.2rem;
+  }
+  
+  .property-slider-container,
+  .slider-item {
+    height: 500px;
+  }
+}
+
+@media (max-width: 576px) {
+  .slider-content h1 {
+    font-size: 2rem;
+  }
+  
+  .slider-content p {
+    font-size: 1rem;
+  }
+  
+  .property-slider-container,
+  .slider-item {
+    height: 400px;
+  }
+}

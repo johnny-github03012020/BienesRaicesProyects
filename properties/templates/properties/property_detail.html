@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ property.title }} - Bienes Raíces</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <h1>{{ property.title }}</h1>
+    
+    <div class="property-details">
+        {% if property.featured_image %}
+            <img src="{{ property.featured_image.url }}" alt="{{ property.title }}">
+        {% endif %}
+        
+        <p>{{ property.description }}</p>
+        
+        <div class="property-info">
+            <p><strong>Precio:</strong> ${{ property.price }}</p>
+            <p><strong>Ubicación:</strong> {{ property.location }}</p>
+            <p><strong>Dirección:</strong> {{ property.address }}</p>
+            <p><strong>Tipo:</strong> {{ property.get_property_type_display }}</p>
+            <p><strong>Operación:</strong> {{ property.get_operation_type_display }}</p>
+            <p><strong>Área:</strong> {{ property.area }} m²</p>
+            
+            {% if property.bedrooms %}
+                <p><strong>Habitaciones:</strong> {{ property.bedrooms }}</p>
+            {% endif %}
+            
+            {% if property.bathrooms %}
+                <p><strong>Baños:</strong> {{ property.bathrooms }}</p>
+            {% endif %}
+        </div>
+    </div>
+    
+    <a href="{% url 'properties:property_list' %}">Volver al listado</a>
+</body>
+</html>
